@@ -14,7 +14,6 @@ class AbstractTranspo(ABC):
 
 class landTransportation():
 
-    #LAND TRANSPORTATION DICTIONARY
     landTranspoDict = {
         "L01" : {
             "Vehicle": "Car",
@@ -40,7 +39,6 @@ class landTransportation():
 
 class seaTransportation():
 
-    #SEA TRANSPORTATION DICTIONARY
     seaTranspoDict = {
         "S01" : {
             "Vehicle": "Motorboat",
@@ -65,7 +63,6 @@ class seaTransportation():
 
 class airTransportation():
 
-    #AIR TRANSPORTATION DICTIONARY
     airTranspoDict = {
         "A01" : {
             "Vehicle": "Helicopter",
@@ -143,7 +140,6 @@ class Transportation(AbstractTranspo, landTransportation, seaTransportation, air
         transpoChoice = int(input("Enter Choice: "))
 
         if(transpoChoice == 1):
-            #GET TRANSPO TEST
             transpoInfo = input("Among the Available Modes of Transportations: [Land, Sea, Air] \nWhich would you like to utilize: ") 
 
             if(transpoInfo == "Land" or transpoInfo == "land"):
@@ -157,7 +153,6 @@ class Transportation(AbstractTranspo, landTransportation, seaTransportation, air
             self.getTranspo(transpoDict, transpoID)
 
         elif(transpoChoice == 2):
-            #CHANGE NUMBER OF PASSENGERS TEST
             print("You are here to Change the number of Passengers")
             transpoMode = input("Please select a Mode of Transportation: [Land, Sea, Air] ")
             if(transpoMode == "Land" or transpoMode == "land"):
@@ -174,7 +169,6 @@ class Transportation(AbstractTranspo, landTransportation, seaTransportation, air
             transpoSystem.getTranspo(transpoInfo, transpoID)
 
         elif(transpoChoice == 3):
-            #REMOVE TRANSPO TEST
             transpoInfo = input("Among the Available Modes of Transportations: [Land, Sea, Air] \nWhich would you like to remove: ")
 
             if(transpoInfo == "Land" or transpoInfo == "land"):
@@ -187,8 +181,7 @@ class Transportation(AbstractTranspo, landTransportation, seaTransportation, air
             transpoID = input("Please input their Transportation ID here: ")
             self.removeTranspo(transpoDict, transpoID)
 
-
-        
+     
 if __name__ == "__main__":
     "MAIN METHOD TO TEST THE TRANSPORTATION CLASS"
 

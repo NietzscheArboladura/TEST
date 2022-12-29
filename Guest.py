@@ -3,7 +3,6 @@ from abc import ABC, abstractmethod
 from typing import List
 
 
-#Interface PERSON
 class Person(object):
     "Person Object"
     def __init__(self, fullname, age, gender):
@@ -14,10 +13,8 @@ class Person(object):
 
 class Guest:
 
-    #LIST OF GUESTS
     _guestList = []
 
-    #LIST LENGTH
     listLength = 0
 
     def addGuest(self):
@@ -80,9 +77,6 @@ if __name__ == "__main__":
     "MAIN METHOD TO TEST THE GUEST CLASS"
     guestSystem = Guest()
 
-    #guestSystem.addGuest()
-
-    #guestSystem.showGuestList()
     guestSystem.guestMain()
 
         

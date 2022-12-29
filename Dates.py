@@ -12,7 +12,6 @@ class Date:
         return date
 
 class Departure(Date):
-    #LIST OF DEPARTURE DATES
     _departureList = []
 
     @abstractmethod
@@ -20,7 +19,6 @@ class Departure(Date):
         pass
     
 class Return(Date):
-    #LIST OF RETURN DATES
     _returnList = []
 
     @abstractmethod
@@ -29,7 +27,6 @@ class Return(Date):
 
 class DatePlan(Departure, Return):
 
-    #THIS IS TO GET THE CURRENT YEAR
     today = datetime.date.today()
     year = today.year
 
@@ -58,7 +55,6 @@ class DatePlan(Departure, Return):
         depDate = self.departureDate(departureYear,departureMonth,departureDay)
         self.depDate = depDate
         print("The Date of your Departure will be "+ str(depDate))
-        #print(str(self.depDate))
 
         returnDay = int(input("How many days will you be Travelling for: "))
         retDate = self.returnDate(depDate, returnDay)

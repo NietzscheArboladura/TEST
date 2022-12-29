@@ -1,7 +1,6 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import List
-#IMPORTATION OF ALL OTHER CLASSES
 from Guest import *
 from Dates import *
 from Location import *
@@ -10,10 +9,8 @@ from Budget import *
 
 class TravelPlan(Guest, DatePlan, Location, Transportation, MainBudget):
 
-    #TRAVEL PLAN DICTIONARY
     travelPlanDict = {}
 
-    #VIEW TRAVEL PLAN
     def viewTravelPlan(self, travelPlanID):
         try:
             if(len(self.travelPlanDict) == 0 or self.travelPlanDict[travelPlanID]["Status"] == False):
@@ -22,7 +19,6 @@ class TravelPlan(Guest, DatePlan, Location, Transportation, MainBudget):
                 print("Well Done! This is Travel Plan ID["+ str(travelPlanID) +"]:")
                 print("Travel Plan Title: " + self.travelPlanDict[travelPlanID]["Title"])
                 
-                #SHOW GUESTLIST
                 try:
                     x = 0
                     for obj in self.travelPlanDict[travelPlanID]["Guests"]:
@@ -42,7 +38,6 @@ class TravelPlan(Guest, DatePlan, Location, Transportation, MainBudget):
         except:
             print("Travel Plan Incomplete!")
 
-    #CLEAR TRAVEL PLAN
     def clearTravelPlan(self):
         try:
             self.travelPlanDict.clear()
@@ -51,7 +46,6 @@ class TravelPlan(Guest, DatePlan, Location, Transportation, MainBudget):
             print("Unexpected Error, Travel Plan has not been Cleared")
     
     def travelPlanMenu(self, travelPlanID):
-        #MANAGE TRAVEL PLAN MENU
         travelPlanChoice = 7
         while travelPlanChoice != 0:
             print("Manage Travel Plan: "+ self.travelPlanDict[travelPlanID]["Title"])
@@ -61,7 +55,6 @@ class TravelPlan(Guest, DatePlan, Location, Transportation, MainBudget):
             if(travelPlanChoice == 1):
                 try:
                     self.guestMain()
-                    #self.travelPlanDict[travelPlanID]["Guests"] = self._guestList
                 except:
                     print("Unexpected Error in Managing Guests")
             elif(travelPlanChoice == 2):
@@ -98,14 +91,12 @@ class TravelPlan(Guest, DatePlan, Location, Transportation, MainBudget):
                     print("Unexpected Error in Managing Budget")
 
     
-    #VIEW TRAVEL PLAN TITLES
     def viewTitles(self):
         print("Current Travel Plans")
         for x in range(len(self.travelPlanDict)):
             if(self.travelPlanDict[x]["Status"] == True):
                 print("Travel Plan ID["+ str(x) +"]: "+ self.travelPlanDict[x]["Title"])
 
-    #HARD DELETE A TRAVEL PLAN
     def removeTravelPlan(self, travelplanID):
         try:
             self.travelPlanDict.pop(travelplanID)
@@ -113,7 +104,6 @@ class TravelPlan(Guest, DatePlan, Location, Transportation, MainBudget):
         except:
             print("Unexpected Error, Travel Plan has not been Removed")
     
-    #SOFT DELETE A TRAVEL PLAN
     def softDeleteTravelPlan(self, travelplanID):
         try:
             self.travelPlanDict[travelplanID]["Status"] = False
@@ -121,7 +111,6 @@ class TravelPlan(Guest, DatePlan, Location, Transportation, MainBudget):
         except:
             print("Unexpected Error, Travel Plan has not been Removed")
     
-    #MAIN MENU
     def travelPlanMain(self):
         numberOfTravelPlans = int(input("Hello! \nSo how many Travel Plans are you going to make today: "))
 
@@ -136,7 +125,6 @@ class TravelPlan(Guest, DatePlan, Location, Transportation, MainBudget):
                 print("There are Currently no people going on the trip, time to add some people.")
                 self.travelPlanDict[x]["Guests"] = self.addGuest()
 
-            #TRAVEL PLAN MAIN MENU
             travelPlanMain = 5
             while travelPlanMain > 0:
                 print("This is the Travel Plan Main Menu")

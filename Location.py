@@ -4,7 +4,6 @@ from typing import List
 
 class Country(ABC):
 
-    #LIST OF COUNTRIES
     _countryList = []
 
     @abstractmethod
@@ -17,7 +16,6 @@ class Country(ABC):
 
 class City(ABC):
 
-    #LIST OF CITY
     _cityList = []
 
     @abstractmethod
@@ -30,7 +28,6 @@ class City(ABC):
 
 class Location(Country, City):
 
-    #LIST OF LOCATIONS
     _locationList = []
 
     def getCountry(self, countryInput):
@@ -59,19 +56,16 @@ class Location(Country, City):
     def locationMenu(self):
         print("Hello and welcome to the Location Menu")
     
-        #COUNTRY TEST
         countryInput = input("Enter the Country for your visit: ")
         self.getCountry(countryInput)
         print("THIS IS THE COUNTRY FOR YOUR STAY: ")
         self.viewCountries()
 
-        #CITY TEST
         cityInput = input("Enter the City of that Country for your visit: ")
         self.getCity(cityInput)
         print("THIS IS THE CITY FOR YOUR STAY: ")
         self.viewCities()
 
-        #LOCATION TEST
         self.location(countryInput, cityInput)
         print("THIS IS THE LOCATION FOR YOUR STAY: ")
         self.viewLocations()
