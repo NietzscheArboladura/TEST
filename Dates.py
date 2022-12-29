@@ -29,6 +29,10 @@ class Return(Date):
 
 class DatePlan(Departure, Return):
 
+    #THIS IS TO GET THE CURRENT YEAR
+    today = datetime.date.today()
+    year = today.year
+
     def departureDate(self, yearInput, monthInput, dayInput):
         if(yearInput < self.year):
             print("INVALID DATE")
@@ -45,6 +49,7 @@ class DatePlan(Departure, Return):
 
     def dateMain(self):
         print("Welcome to the Date menu!")
+        print("Our Date currently is: "+ str(datetime.datetime.now().date()))
 
         departureYear = int(input("Please Enter the Year of your departure: "))
         departureMonth = int(input("Please Enter the Month of your departure: "))

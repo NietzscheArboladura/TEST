@@ -1,11 +1,14 @@
 from __future__ import annotations
+from abc import ABC, abstractmethod
 from typing import List
 #IMPORTATION OF ALL OTHER CLASSES
 from Guest import *
 from Dates import *
 from Location import *
+from Transportation import *
+from Budget import *
 
-class TravelPlan(Guest, DatePlan, Location):
+class TravelPlan(Guest, DatePlan, Location, Transportation, MainBudget):
 
     #TRAVEL PLAN DICTIONARY
     travelPlanDict = {}
@@ -31,8 +34,10 @@ class TravelPlan(Guest, DatePlan, Location):
                 print("Departure Date: " + str(self.travelPlanDict[travelPlanID]["Departure Date"]))
                 print("Return Date: " + str(self.travelPlanDict[travelPlanID]["Return Date"]))
                 print("Location: " + self.travelPlanDict[travelPlanID]["Location"])
+                print("Transportation ID: " + self.travelPlanDict[travelPlanID]["Transportation ID"])
                 print("Vehicle: " + self.travelPlanDict[travelPlanID]["Vehicle"])
                 print("Passengers: " + str(self.travelPlanDict[travelPlanID]["Passengers"]))
+                print("Budget: " + str(self.travelPlanDict[travelPlanID]["Budget"]))
                 
         except:
             print("Travel Plan Incomplete!")
@@ -50,7 +55,7 @@ class TravelPlan(Guest, DatePlan, Location):
         travelPlanChoice = 7
         while travelPlanChoice != 0:
             print("Manage Travel Plan: "+ self.travelPlanDict[travelPlanID]["Title"])
-            print("What would you like to do? \n1.) Manage Guests \n2.) Manage Dates \n3.) Manage Location \n6.) View Current Travel Plan \n0.) Return to Main Menu")
+            print("What would you like to do? \n1.) Manage Guests \n2.) Manage Dates \n3.) Manage Location \n4.) Manage Transportation \n5.) Manage Budget \n6.) View Current Travel Plan \n0.) Return to Main Menu")
             travelPlanChoice = int(input("Enter your choice here: "))
 
             if(travelPlanChoice == 1):
@@ -72,6 +77,20 @@ class TravelPlan(Guest, DatePlan, Location):
                     self.travelPlanDict[travelPlanID]["Location"] = self._locationList[travelPlanID]
                 except:
                     print("Unexpected Error in Managing Location")
+            elif(travelPlanChoice == 4):
+                try:
+                    self.transportationMenu()
+                    self.travelPlanDict[travelPlanID]["Transportation ID"] = self.transpoID
+                    self.travelPlanDict[travelPlanID]["Vehicle"] = self.transpoVehicle
+                    self.travelPlanDict[travelPlanID]["Passengers"] = self.transpoPassengers
+                except:
+                    print("Unexpected Error in Managing Transportation")
+            elif(travelPlanChoice == 5):
+                try:
+                    self.budgetMain()
+                    self.travelPlanDict[travelPlanID]["Budget"] = self.TotalBudget
+                except:
+                    print("Unexpected Error in Managing Budget")
             elif(travelPlanChoice == 6):
                 try:
                     self.viewTravelPlan(travelPlanID)
