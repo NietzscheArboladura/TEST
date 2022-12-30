@@ -10,7 +10,6 @@ class Person(object):
         self.age = age
         self.gender = gender
 
-
 class Guest:
 
     _guestList = []

@@ -5,7 +5,6 @@ import datetime
 
 
 class Date:
-
     def getDate(self, yearInput, monthInput, dayInput):
         Ddate = datetime.datetime(yearInput, monthInput, dayInput)
         date = Ddate.date()
