@@ -100,14 +100,14 @@ class TravelPlan(User, DatePlan, Destination, Transportation, MainBudget):
     def removeTravelPlan(self, travelplanID):
         try:
             self.travelPlanDict.pop(travelplanID)
-            print("Travel Plan Removed")
+            print("Travel Plan Removed\n")
         except:
             print("Unexpected Error")
     
     def softDeleteTravelPlan(self, travelplanID):
         try:
             self.travelPlanDict[travelplanID]["Status"] = False
-            print("Travel Plan Removed")
+            print("Travel Plan Removed\n")
         except:
             print("Unexpected Error")
     
