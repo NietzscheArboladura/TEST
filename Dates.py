@@ -3,7 +3,6 @@ from abc import ABC, abstractmethod
 from typing import List
 import datetime
 
-
 class Date:
     def getDate(self, yearInput, monthInput, dayInput):
         Ddate = datetime.datetime(yearInput, monthInput, dayInput)

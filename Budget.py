@@ -6,7 +6,6 @@ class Budget(ABC):
 
     _budgetList = []
 
-
     @staticmethod
     @abstractmethod
 
