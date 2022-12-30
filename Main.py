@@ -3,11 +3,11 @@ from abc import ABC, abstractmethod
 from typing import List
 from User import *
 from Dates import *
-from Location import *
+from Destination import *
 from Transportation import *
 from Budget import *
 
-class TravelPlan(User, DatePlan, Location, Transportation, MainBudget):
+class TravelPlan(User, DatePlan, Destination, Transportation, MainBudget):
 
     travelPlanDict = {}
 
@@ -66,7 +66,7 @@ class TravelPlan(User, DatePlan, Location, Transportation, MainBudget):
                     print("Unexpected Error")
             elif(travelPlanChoice == 3):
                 try:
-                    self.locationMenu()
+                    self.destinationMenu()
                     self.travelPlanDict[travelPlanID]["Location"] = self._locationList[travelPlanID]
                 except:
                     print("Unexpected Error")
