@@ -45,22 +45,20 @@ class MainBudget(TripBudget, EmergencyBudget, ConversionBudget):
         emergencyBudgetSystem = EmergencyBudget()
         ConversionBudgetSystem = ConversionBudget()
 
-        print("Welcome to the Budget Menu!")
-        print("Let's first input the current Trip Budget:")
-        tripBudget = int(input("Enter the Current Budget for the trip: "))
+        print("***Budget Menu***")
+        tripBudget = int(input("Enter the Current Budget: "))
         tripBudgetSystem.budget_size(tripBudget)
 
-        print("Next let's input the Emergency Budget: ")
-        emergencyBudget = int(input("Enter the Emergency Budget for the trip: "))
+        emergencyBudget = int(input("Enter the Emergency Budget: "))
         emergencyBudgetSystem.budget_size(emergencyBudget)
 
-        print("Are you planning to go on a Foreign Country?")
+        print("Are you going to a Foreign Country?")
         ans = input("[Yes/y or No/n]: ")
 
         if (ans == "Yes" or ans == "y"):
             preBudget = sum(self._budgetList)
             print("This is your current Budget: " + str(preBudget))
-            converRate = float(input("Enter the Conversion Rate of that Country to yours: "))
+            converRate = float(input("Enter the Conversion Rate of the country you choose: "))
             ConversionBudgetSystem.budget_size(preBudget,converRate)
             totalBudget = sum(self._budgetList)
             self.TotalBudget = round(totalBudget,2)

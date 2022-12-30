@@ -14,62 +14,62 @@ class TravelPlan(Guest, DatePlan, Location, Transportation, MainBudget):
     def viewTravelPlan(self, travelPlanID):
         try:
             if(len(self.travelPlanDict) == 0 or self.travelPlanDict[travelPlanID]["Status"] == False):
-                print("There is Currently no Travel Plan")
+                print("Currently no Travel Plan")
             else:
-                print("Well Done! This is Travel Plan ID["+ str(travelPlanID) +"]:")
-                print("Travel Plan Title: " + self.travelPlanDict[travelPlanID]["Title"])
+                print("This is Travel Plan ID["+ str(travelPlanID) +"]:")
+                print("Travel Plan Name: " + self.travelPlanDict[travelPlanID]["Title"])
                 
                 try:
                     x = 0
                     for obj in self.travelPlanDict[travelPlanID]["Guests"]:
-                        print("Guest ID."+ str(x) + " " + obj.fullName)
+                        print("Guest ID. #"+ str(x) + " " + obj.fullName)
                         x += 1
                 except:
-                    print("Unexpected Error in showing guests")
+                    print("Unexpected Error")
 
-                print("Departure Date: " + str(self.travelPlanDict[travelPlanID]["Departure Date"]))
-                print("Return Date: " + str(self.travelPlanDict[travelPlanID]["Return Date"]))
-                print("Location: " + self.travelPlanDict[travelPlanID]["Location"])
-                print("Transportation ID: " + self.travelPlanDict[travelPlanID]["Transportation ID"])
-                print("Vehicle: " + self.travelPlanDict[travelPlanID]["Vehicle"])
-                print("Passengers: " + str(self.travelPlanDict[travelPlanID]["Passengers"]))
-                print("Budget: " + str(self.travelPlanDict[travelPlanID]["Budget"]))
+                print("\nDeparture Date: " + str(self.travelPlanDict[travelPlanID]["Departure Date"]))
+                print("\nReturn Date: " + str(self.travelPlanDict[travelPlanID]["Return Date"]))
+                print("\nLocation: " + self.travelPlanDict[travelPlanID]["Location"])
+                print("\nTransportation ID: " + self.travelPlanDict[travelPlanID]["Transportation ID"])
+                print("\nVehicle: " + self.travelPlanDict[travelPlanID]["Vehicle"])
+                print("\nPassengers: " + str(self.travelPlanDict[travelPlanID]["Passengers"]))
+                print("\nBudget: " + str(self.travelPlanDict[travelPlanID]["Budget"]))
                 
         except:
-            print("Travel Plan Incomplete!")
+            print("Incomplete Travel Plan!")
 
     def clearTravelPlan(self):
         try:
             self.travelPlanDict.clear()
-            print("The Travel Plan has been Cleared")
+            print("Travel Plan Cleared")
         except:
-            print("Unexpected Error, Travel Plan has not been Cleared")
+            print("Unexpected Error")
     
     def travelPlanMenu(self, travelPlanID):
         travelPlanChoice = 7
         while travelPlanChoice != 0:
-            print("Manage Travel Plan: "+ self.travelPlanDict[travelPlanID]["Title"])
-            print("What would you like to do? \n1.) Manage Guests \n2.) Manage Dates \n3.) Manage Location \n4.) Manage Transportation \n5.) Manage Budget \n6.) View Current Travel Plan \n0.) Return to Main Menu")
-            travelPlanChoice = int(input("Enter your choice here: "))
+            print("***Manage Travel Plan: ***"+ self.travelPlanDict[travelPlanID]["Title"])
+            print("\n1.) Manage Guests \n2.) Manage Dates \n3.) Manage Location \n4.) Manage Transportation \n5.) Manage Budget \n6.) View Travel Plans\n0.) Return Main Menu")
+            travelPlanChoice = int(input("Enter here: "))
 
             if(travelPlanChoice == 1):
                 try:
                     self.guestMain()
                 except:
-                    print("Unexpected Error in Managing Guests")
+                    print("Unexpected Error")
             elif(travelPlanChoice == 2):
                 try:
                     self.dateMain()
                     self.travelPlanDict[travelPlanID]["Departure Date"] = self.depDate
                     self.travelPlanDict[travelPlanID]["Return Date"] = self.retDate
                 except:
-                    print("Unexpected Error in Managing Dates")
+                    print("Unexpected Error")
             elif(travelPlanChoice == 3):
                 try:
                     self.locationMenu()
                     self.travelPlanDict[travelPlanID]["Location"] = self._locationList[travelPlanID]
                 except:
-                    print("Unexpected Error in Managing Location")
+                    print("Unexpected Error")
             elif(travelPlanChoice == 4):
                 try:
                     self.transportationMenu()
@@ -77,18 +77,18 @@ class TravelPlan(Guest, DatePlan, Location, Transportation, MainBudget):
                     self.travelPlanDict[travelPlanID]["Vehicle"] = self.transpoVehicle
                     self.travelPlanDict[travelPlanID]["Passengers"] = self.transpoPassengers
                 except:
-                    print("Unexpected Error in Managing Transportation")
+                    print("Unexpected Error")
             elif(travelPlanChoice == 5):
                 try:
                     self.budgetMain()
                     self.travelPlanDict[travelPlanID]["Budget"] = self.TotalBudget
                 except:
-                    print("Unexpected Error in Managing Budget")
+                    print("Unexpected Error")
             elif(travelPlanChoice == 6):
                 try:
                     self.viewTravelPlan(travelPlanID)
                 except:
-                    print("Unexpected Error in Managing Budget")
+                    print("Unexpected Error")
 
     
     def viewTitles(self):
@@ -100,46 +100,43 @@ class TravelPlan(Guest, DatePlan, Location, Transportation, MainBudget):
     def removeTravelPlan(self, travelplanID):
         try:
             self.travelPlanDict.pop(travelplanID)
-            print("The Travel Plan has been Removed")
+            print("Travel Plan Removed")
         except:
-            print("Unexpected Error, Travel Plan has not been Removed")
+            print("Unexpected Error")
     
     def softDeleteTravelPlan(self, travelplanID):
         try:
             self.travelPlanDict[travelplanID]["Status"] = False
-            print("The Travel Plan has been Removed")
+            print("Travel Plan Removed")
         except:
-            print("Unexpected Error, Travel Plan has not been Removed")
+            print("Unexpected Error")
     
     def travelPlanMain(self):
-        numberOfTravelPlans = int(input("Hello! \nSo how many Travel Plans are you going to make today: "))
+        numberOfTravelPlans = int(input("***Welcome Visitors!***\nHow many Travel Plans are you going to make today: "))
 
         try:
-            print("Welcome! Time to Create a Travel Plan!")
             for x in range(numberOfTravelPlans):
                 self.travelPlanDict[x] = {}
 
-                travelPlanName = input("Input the Title for Travel Plan ID["+ str(x) +"]: ")
+                travelPlanName = input("Input the Name for Travel Plan ID["+ str(x) +"]: ")
                 self.travelPlanDict[x]["Title"] = travelPlanName
                 self.travelPlanDict[x]["Status"] = True
-                print("There are Currently no people going on the trip, time to add some people.")
+                print("Currently no people on the trip, add some!")
                 self.travelPlanDict[x]["Guests"] = self.addGuest()
 
             travelPlanMain = 5
             while travelPlanMain > 0:
-                print("This is the Travel Plan Main Menu")
-                print("What would you like to do? \n1.) Manage a Travel Plan \n2.) View Travel Plans \n3.) Remove a Travel Plan \n0.) EXIT APPLICATION")
-                travelPlanMain = int(input("Enter your choice here: "))
+                print("***Travel Plan Main Menu***")
+                print("\n1.) Manage a Travel Plan \n2.) View Travel Plans \n3.) Remove a Travel Plan \n0.) EXIT APPLICATION")
+                travelPlanMain = int(input("Enter here: "))
 
                 if(travelPlanMain == 1):
-                    print("Select a Travel Plan to Manage:")
                     self.viewTitles()
                     tpChoice = int(input("Enter the Travel Plan ID here: "))
                     self.travelPlanMenu(tpChoice)
                     self.viewTravelPlan(tpChoice)
                 elif(travelPlanMain == 2):
                     try:
-                        print("Select a Travel Plan to View:")
                         self.viewTitles()
                         tpChoice = int(input("Enter the Travel Plan ID here: "))
                         self.viewTravelPlan(tpChoice)
@@ -147,18 +144,17 @@ class TravelPlan(Guest, DatePlan, Location, Transportation, MainBudget):
                         print("Unexpected Error in Viewing Travel Plan")
                 elif(travelPlanMain == 3):
                     try:
-                        print("Select a Travel Plan to Remove:")
                         self.viewTitles()
                         tpChoice = int(input("Enter the Travel Plan ID here: "))
                         self.softDeleteTravelPlan(tpChoice)
                     except:
-                        print("Unexpected Error in clearing Travel Plan")
+                        print("Unexpected Error")
             else:
-                print("Thank you!")
+                print("Thank You and Come Again!")
                 print(exit)
 
         except:
-            print("Unexpected Error in creating Travel Plan")
+            print("Unexpected Error")
 
         
 

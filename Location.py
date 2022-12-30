@@ -54,20 +54,20 @@ class Location(Country, City):
             print("Location: " + x)
     
     def locationMenu(self):
-        print("Hello and welcome to the Location Menu")
+        print("***Location Menu***")
     
-        countryInput = input("Enter the Country for your visit: ")
+        countryInput = input("Country you want to visit: ")
         self.getCountry(countryInput)
-        print("THIS IS THE COUNTRY FOR YOUR STAY: ")
+        print("This is the country you'll be staying: ")
         self.viewCountries()
 
-        cityInput = input("Enter the City of that Country for your visit: ")
+        cityInput = input("City of that Country you want to visit: ")
         self.getCity(cityInput)
-        print("THIS IS THE CITY FOR YOUR STAY: ")
+        print("This is the city you'll be staying: ")
         self.viewCities()
 
         self.location(countryInput, cityInput)
-        print("THIS IS THE LOCATION FOR YOUR STAY: ")
+        print("This is the location of you visit: ")
         self.viewLocations()
 
 if __name__ == "__main__":

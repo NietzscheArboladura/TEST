@@ -30,8 +30,7 @@ class landTransportation():
     }
 
     def viewLandDictionary(self):
-        print("Here are the Available Land Transportations")
-        print("Available Land transportations:")
+        print("\nAvailable Land transportations:")
         for key, value in self.landTranspoDict.items():
             print(key, " : " , value)
         return self.landTranspoDict
@@ -55,8 +54,7 @@ class seaTransportation():
     }
 
     def viewSeaDictionary(self):
-        print("Here are the Available Sea Transportations")
-        print("Available Sea transportations:")
+        print("\nAvailable Sea transportations:")
         for key, value in self.seaTranspoDict.items():
             print(key, " : " , value)
         return self.seaTranspoDict
@@ -79,8 +77,7 @@ class airTransportation():
     }
 
     def viewAirDictionary(self):
-        print("Here are the Available Air Transportations")
-        print("Available Air transportations:")
+        print("\nAvailable Air transportations:")
         for key, value in self.airTranspoDict.items():
             print(key, " : " , value)
         return self.airTranspoDict
@@ -98,11 +95,11 @@ class Transportation(AbstractTranspo, landTransportation, seaTransportation, air
                 self.transpoID = transpoID
                 self.transpoVehicle = transpoInfo[transpoID]['Vehicle']
                 self.transpoPassengers = transpoInfo[transpoID]['Passengers']
-                print("Information of Transport ID: " + str(transpoID))
+                print("Transport ID: " + str(transpoID))
                 print("Vehicle: ", transpoInfo[transpoID]['Vehicle'])
                 print("Passengers: ", transpoInfo[transpoID]['Passengers'])
         except:
-            print("Mode of Transport does not Exist!")
+            print("Transportation does not Exist!")
     
     def changeTranspoPassengers(self, transpoInfo, transpoID, numOfPassengers):
 
@@ -110,18 +107,18 @@ class Transportation(AbstractTranspo, landTransportation, seaTransportation, air
             transpoInfo[transpoID]['Passengers'] = numOfPassengers
             print("The Number of Passengers has been changed into: " + str(numOfPassengers))
         except:
-            print("Unexpected Error Number of Passengers not Changed")
+            print("Unexpected Error")
     
     def removeTranspo(self, transpoInfo, ltID):
 
         try:
             transpoInfo.pop(ltID)
-            print("The Transportation of TransportID " + str(ltID) + " has been Removed")
+            print("The Transportation of TransportID " + str(ltID) + " has been Deleted")
         except:
-            print("Unexpected Error, Transportation has not been Removed")
+            print("Unexpected Error")
     
     def viewDictionaries(self):
-        print("Here are the Transportation Dictionaries:")
+        print("Transportation Dictionaries:")
         print("Available Land transportations:")
         for key, value in self.landTranspoDict.items():
             print(key, " : " , value)
@@ -136,11 +133,11 @@ class Transportation(AbstractTranspo, landTransportation, seaTransportation, air
         print("Hello and welcome to the Transportation Test Method")
         self.viewDictionaries()
 
-        print("Transportation Menu: \n1.) Select mode of Transportation\n2.) Change Number of Passengers\n3.) Remove Mode of Transport\n0.) EXIT")
-        transpoChoice = int(input("Enter Choice: "))
+        print("***Transportation Menu***\n1.) Select mode of Transportation\n2.) Change Number of Passengers\n3.) Remove Mode of Transport\n0.) EXIT")
+        transpoChoice = int(input("Enter Choice Here: "))
 
         if(transpoChoice == 1):
-            transpoInfo = input("Among the Available Modes of Transportations: [Land, Sea, Air] \nWhich would you like to utilize: ") 
+            transpoInfo = input("Available Modes of Transportations: [Land, Sea, Air] \nWhich would you like to utilize: ") 
 
             if(transpoInfo == "Land" or transpoInfo == "land"):
                 transpoDict = self.viewLandDictionary()
@@ -149,19 +146,19 @@ class Transportation(AbstractTranspo, landTransportation, seaTransportation, air
             elif(transpoInfo == "Air" or transpoInfo == "air"):
                 transpoDict = self.viewAirDictionary()
 
-            transpoID = input("Please input their Transportation ID here: ")
+            transpoID = input("Input Transportation ID here: ")
             self.getTranspo(transpoDict, transpoID)
 
         elif(transpoChoice == 2):
-            print("You are here to Change the number of Passengers")
-            transpoMode = input("Please select a Mode of Transportation: [Land, Sea, Air] ")
+            print("Here, you can change the number of Passengers")
+            transpoMode = input("Select a Mode of Transportation: [Land, Sea, Air] ")
             if(transpoMode == "Land" or transpoMode == "land"):
                 transpoInfo = self.viewLandDictionary()
             elif(transpoMode == "Sea" or transpoMode == "sea"):
                 transpoInfo = self.viewSeaDictionary()
             elif(transpoMode == "Air" or transpoMode == "air"):
                 transpoInfo = self.viewAirDictionary()
-            transpoID = input("Please input their Transportation ID here: ")
+            transpoID = input("Input Transportation ID here: ")
             transpoPass = int(input("How many Passengers to change: "))
             self.changeTranspoPassengers(transpoInfo,transpoID,transpoPass)
                 
@@ -169,7 +166,7 @@ class Transportation(AbstractTranspo, landTransportation, seaTransportation, air
             transpoSystem.getTranspo(transpoInfo, transpoID)
 
         elif(transpoChoice == 3):
-            transpoInfo = input("Among the Available Modes of Transportations: [Land, Sea, Air] \nWhich would you like to remove: ")
+            transpoInfo = input("Available Modes of Transportations: [Land, Sea, Air] \nWhich would you like to remove: ")
 
             if(transpoInfo == "Land" or transpoInfo == "land"):
                     transpoDict = self.viewLandDictionary()
@@ -178,7 +175,7 @@ class Transportation(AbstractTranspo, landTransportation, seaTransportation, air
             elif(transpoInfo == "Air" or transpoInfo == "air"):
                     transpoDict = self.viewAirDictionary()
 
-            transpoID = input("Please input their Transportation ID here: ")
+            transpoID = input("Input their Transportation ID here: ")
             self.removeTranspo(transpoDict, transpoID)
 
      

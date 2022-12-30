@@ -45,21 +45,20 @@ class DatePlan(Departure, Return):
         return returndate
 
     def dateMain(self):
-        print("Welcome to the Date menu!")
-        print("Our Date currently is: "+ str(datetime.datetime.now().date()))
+        print("\n***Date menu***\n")
 
-        departureYear = int(input("Please Enter the Year of your departure: "))
-        departureMonth = int(input("Please Enter the Month of your departure: "))
-        departureDay = int(input("Please Enter the Day of your departure: "))
+        departureYear = int(input("Enter the Year: "))
+        departureMonth = int(input("Enter the Month: "))
+        departureDay = int(input("Enter the Day: "))
 
         depDate = self.departureDate(departureYear,departureMonth,departureDay)
         self.depDate = depDate
-        print("The Date of your Departure will be "+ str(depDate))
+        print("Your Departure Date will be "+ str(depDate))
 
         returnDay = int(input("How many days will you be Travelling for: "))
         retDate = self.returnDate(depDate, returnDay)
         self.retDate = retDate
-        print("The Date of your Return will be "+ str(retDate))
+        print("Your Return Date will be "+ str(retDate))
 
     depDate = ""
     retDate = ""
