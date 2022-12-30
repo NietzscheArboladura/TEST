@@ -48,7 +48,7 @@ class TravelPlan(User, DatePlan, Destination, Transportation, MainBudget):
     def travelPlanMenu(self, travelPlanID):
         travelPlanChoice = 7
         while travelPlanChoice != 0:
-            print("***Manage Travel Plan: ***"+ self.travelPlanDict[travelPlanID]["Title"])
+            print("\nManage Travel Plan: "+ self.travelPlanDict[travelPlanID]["Title"])
             print("\n1.) Manage Guests \n2.) Manage Dates \n3.) Manage Location \n4.) Manage Transportation \n5.) Manage Budget \n6.) View Travel Plans\n0.) Return Main Menu")
             travelPlanChoice = int(input("Enter here: "))
 

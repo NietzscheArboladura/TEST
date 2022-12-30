@@ -59,7 +59,7 @@ class User:
             print("Currently no Guests")
     
     def userMain(self):
-        print("***Companions Menu***")
+        print("***Fellow Visitors Menu***")
         if(len(self._guestList) == 0):
             print("Currently no people going on the trip, add some.")
             self.addUser()
