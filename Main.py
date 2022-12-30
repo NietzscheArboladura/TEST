@@ -1,13 +1,13 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import List
-from Guest import *
+from User import *
 from Dates import *
 from Location import *
 from Transportation import *
 from Budget import *
 
-class TravelPlan(Guest, DatePlan, Location, Transportation, MainBudget):
+class TravelPlan(User, DatePlan, Location, Transportation, MainBudget):
 
     travelPlanDict = {}
 
@@ -54,7 +54,7 @@ class TravelPlan(Guest, DatePlan, Location, Transportation, MainBudget):
 
             if(travelPlanChoice == 1):
                 try:
-                    self.guestMain()
+                    self.userMain()
                 except:
                     print("Unexpected Error")
             elif(travelPlanChoice == 2):
@@ -122,7 +122,7 @@ class TravelPlan(Guest, DatePlan, Location, Transportation, MainBudget):
                 self.travelPlanDict[x]["Title"] = travelPlanName
                 self.travelPlanDict[x]["Status"] = True
                 print("Currently no people on the trip, add some!")
-                self.travelPlanDict[x]["Guests"] = self.addGuest()
+                self.travelPlanDict[x]["Guests"] = self.addUser()
 
             travelPlanMain = 5
             while travelPlanMain > 0:
