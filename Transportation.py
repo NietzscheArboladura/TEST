@@ -15,15 +15,15 @@ class AbstractTranspo(ABC):
 class landTransportation():
 
     landTranspoDict = {
-        "L01" : {
+        "LV01" : {
             "Vehicle": "Car",
             "Passengers": 4
         },
-        "L02" : {
+        "LV02" : {
             "Vehicle": "Van",
             "Passengers": 8
         },
-        "L03" : {
+        "LV03" : {
             "Vehicle": "Truck",
             "Passengers": 15
         },
@@ -39,15 +39,15 @@ class landTransportation():
 class seaTransportation():
 
     seaTranspoDict = {
-        "S01" : {
+        "SV01" : {
             "Vehicle": "Motorboat",
             "Passengers": 8
         },
-        "S02" : {
+        "SV02" : {
             "Vehicle": "Sailboat",
             "Passengers": 15
         },
-        "S03" : {
+        "SV03" : {
             "Vehicle": "Cruise Ship",
             "Passengers": 100
         },
@@ -62,15 +62,15 @@ class seaTransportation():
 class airTransportation():
 
     airTranspoDict = {
-        "A01" : {
+        "AV01" : {
             "Vehicle": "Helicopter",
             "Passengers": 6
         },
-        "A02" : {
+        "AV02" : {
             "Vehicle": "Private Jet",
             "Passengers": 20
         },
-        "A03" : {
+        "AV03" : {
             "Vehicle": "Passenger Airline",
             "Passengers": 100
         },

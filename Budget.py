@@ -52,7 +52,7 @@ class MainBudget(TripBudget, EmergencyBudget, ConversionBudget):
         emergencyBudgetSystem.budget_size(emergencyBudget)
 
         print("Are you going to a Foreign Country?")
-        ans = input("[Yes/y or No/n]: ")
+        ans = input("Yes or No: ")
 
         if (ans == "Yes" or ans == "y"):
             preBudget = sum(self._budgetList)
